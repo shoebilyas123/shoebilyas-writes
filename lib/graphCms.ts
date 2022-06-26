@@ -14,7 +14,7 @@ export async function getBlogBySlug(slug: string) {
       content {
         html
       }
-      createdAt
+      writtenAt
       summary
     }
   }
@@ -22,6 +22,7 @@ export async function getBlogBySlug(slug: string) {
     const { blog } = await client.request(query);
     const transformed: IBlog = {
       ...blog,
+      createdAt: blog.writtenAt,
       content: `${blog.content.html}`
         .replaceAll("</p>", "</p><br/>")
         .replaceAll("<h1>", '<h1 className="text-2xl font-medium">')
@@ -60,13 +61,17 @@ export async function getAllBlogs() {
           id
           title
           summary
-          createdAt
+          writtenAt
         }
       }
     `;
 
     const { blogs } = await client.request(query);
-    return blogs as IBlogItem[];
+    const transformedBlogs: IBlogItem[] = blogs.map((blog: any) => ({
+      ...blog,
+      createdAt: blog.writtenAt,
+    }));
+    return transformedBlogs;
   } catch (err) {
     console.log(err);
     return [];
