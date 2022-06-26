@@ -36,7 +36,7 @@ const BlogItem: React.FC<IProps> = ({ blog }) => {
         <h1 className="font-medium text-xl">{blog.title}</h1>
         <p className={`mt-2 ${classes["summary"]}`}>{blog.summary}</p>
         <div className="flex justify-between items-center">
-          <span className="text-gray-600 text-sm">
+          <span className="text-gray-800 text-sm">
             {moment(blog.createdAt).format("LL")}
           </span>
           <Link href={`/blogs/${blog.slug}`}>

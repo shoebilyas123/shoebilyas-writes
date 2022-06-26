@@ -40,14 +40,19 @@ const BlogPage: NextPage<IProps> = (props) => {
         </Overlay>
       )}
 
-      <div className="w-6/12 flex flex-col mt-4">
-        <Link href="/">
-          <Button onClick={initiateLoading}>
-            <BsArrowLeft />
-            <span className="ml-2">Go Back</span>
-          </Button>
-        </Link>
-        <div className="w-11/12 h-fit bg-white mt-4 shadow-lg p-6">
+      <div className="lg:w-6/12 md:w-4/5 sm:w-full flex flex-col md:mt-4 md:mb-6">
+        <div className="sm:fixed md:relative sm:top-4 sm:left-4 lg:top-0 lg:left-0">
+          <Link href="/">
+            <Button
+              onClick={initiateLoading}
+              className="sm:p-4 rounded-full lg:rounded lg:px-4 lg:py-2"
+            >
+              <BsArrowLeft />
+              <span className="sm:hidden lg:block ml-2">Go Back</span>
+            </Button>
+          </Link>
+        </div>
+        <div className="lg:w-11/12 md:w-full sm:w-full h-fit lg:mt-4 bg-white shadow-lg p-6">
           <h1
             className="font-bold text-4xl"
             style={{ color: "var(--font-purple-dark)" }}

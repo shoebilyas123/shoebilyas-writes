@@ -10,10 +10,10 @@ const Input: React.FC<IProps> = ({ value, onChange }) => {
   return (
     <form onSubmit={(e: any) => e.preventDefault()}>
       <input
-        className={`${classes["custom-input"]} p-2 w-1/2`}
+        className={`${classes["custom-input"]} p-2 sm:w-full md:w-1/2 lg:w-1/2`}
         value={value}
         onChange={onChange}
-        placeholder={`Search for blogs...`}
+        placeholder={`Search for articles...`}
       />
     </form>
   );

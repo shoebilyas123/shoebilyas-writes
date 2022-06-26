@@ -62,12 +62,14 @@ const Home: NextPage<IProps & AppProps> = ({ blogList }) => {
         </Overlay>
       )}
       <Navbar />
-      <div className={`w-full h-screen flex flex-col items-center mt-4`}>
-        <main className="w-3/5 px-2 mb-auto">
+      <div className={`w-full h-screen flex flex-col md:items-center mt-4`}>
+        <main className="md:w-3/5 px-2 sm:w-full sm:px-6 mb-auto sm:px-1">
           <Input value={search} onChange={searchChangeHandler} />
-          <div className="w-3/5 flex flex-col justify-center items-center mt-4">
+          <div className="md:w-4/5 lg:w-3/5 sm:w-full flex flex-col justify-center items-center mt-4">
             {blogs.map((blog) => (
-              <BlogItem key={blog.id} blog={blog} />
+              <>
+                <BlogItem key={blog.id} blog={blog} />
+              </>
             ))}
           </div>
         </main>

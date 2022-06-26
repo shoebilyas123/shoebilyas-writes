@@ -8,12 +8,14 @@ import classes from "./Footer.module.css";
 const Footer = () => {
   return (
     <footer
-      className={`${classes.footer} mt-6 mb-0 w-full flex flex-row items-center justify-center`}
-      style={{ color: "var(--font-purple-dark)" }}
+      className={`${classes.footer} lg:mt-6 mb-0 w-full flex flex-row items-center justify-center text-gray-200`}
+      style={{ background: "var(--font-purple-dark)" }}
     >
-      <div className="w-1/2 p-6 flex flex-row justify-between">
-        <div className="w-1/2 text-sm">
-          <div className="flex flex-col text-md font-medium">Shoeb Ilyas</div>
+      <div className="md:w-4/5 lg:w-1/2 sm:w-full p-6 flex md:flex-row sm:flex-col justify-between ">
+        <div className="md:w-1/2 sm:w-full sm:mb-4 text-sm">
+          <div className="flex flex-col text-xl font-medium sm:text-center md:text-left">
+            Shoeb Ilyas
+          </div>
           <p>
             We all have heard this phrase a gazillion times that we should not
             compare ourselves with others but it is ubiquitous that people
@@ -22,17 +24,16 @@ const Footer = () => {
             their mind. Now this require a separate article to be talked about.
           </p>
         </div>
-        <div className="flex flex-col">
-          <p className="text-md font-medium">Links</p>
+        <div className="sm:w-full md:w-auto flex flex-col sm:mb-4 sm:items-center md:items-left">
+          <p className="text-xl font-medium sm:text-center md:text-left mb-2">
+            Links
+          </p>
           <Link href="/">
-            <a className="hover:text-bg-white">Home</a>
-          </Link>
-          <Link href="/">
-            <a>Articles</a>
+            <a className="text-sm">Articles</a>
           </Link>
         </div>
-        <div className="flex flex-col">
-          <p className="text-md font-medium">Socials</p>
+        <div className="flex flex-col sm:mb-4 sm:items-center md:items-left">
+          <p className="text-xl font-medium">Socials</p>
           <Link href="https://www.linkedin.com/in/shoeb-ilyas/">
             <a target="_blank">
               <AiFillInstagram
@@ -50,8 +51,8 @@ const Footer = () => {
             </a>
           </Link>
         </div>
-        <div className="flex flex-col">
-          <NewsletterInput />
+        <div className="flex flex-col sm:w-full sm:items-center md:items-left md:w-auto">
+          <NewsletterInput isFooter={true} />
         </div>
       </div>
     </footer>

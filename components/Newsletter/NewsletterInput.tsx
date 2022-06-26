@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import Button from "../Button";
 
-const NewsletterInput = () => {
+interface IProps {
+  isFooter?: boolean;
+}
+
+const NewsletterInput: React.FC<IProps> = ({ isFooter = false }) => {
   const [email, setEmail] = useState<string>("");
   const [isValidEmail, setIsValidEmail] = useState<boolean>(true);
   const emailRegex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
@@ -26,7 +30,7 @@ const NewsletterInput = () => {
         value={email}
         className="px-4 py-2 w-full placeholder-gray-600 font-medium"
         style={{
-          color: "var(--font-purple-dark)",
+          color: isFooter ? "rgb(200,200,200)" : "var(--font-purple-dark)",
           background: "rgba(0,0,0,.15)",
           outline: "none",
           borderRadius: "7.5px",
