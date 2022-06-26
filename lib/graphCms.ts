@@ -25,8 +25,8 @@ export async function getBlogBySlug(slug: string) {
       createdAt: blog.writtenAt,
       content: `${blog.content.html}`
         .replaceAll("</p>", "</p><br/>")
-        .replaceAll("<h1>", '<h1 className="text-2xl font-medium">')
-        .replaceAll("<h2>", '<h2 className="text-xl font-medium">'),
+        .replaceAll("<h1>", '<h1 className="text-2xl font-bold">')
+        .replaceAll("<h2>", '<h2 className="text-xl font-bold">'),
     };
 
     return transformed;

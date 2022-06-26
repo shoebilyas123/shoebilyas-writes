@@ -8,7 +8,7 @@ import classes from "./Footer.module.css";
 const Footer = () => {
   return (
     <footer
-      className={`${classes.footer} lg:mt-6 mb-0 w-full flex flex-row items-center justify-center text-gray-200`}
+      className={`${classes.footer} lg:mt-6 w-full flex flex-row items-center justify-center text-gray-200`}
       style={{ background: "var(--font-purple-dark)" }}
     >
       <div className="md:w-4/5 lg:w-1/2 sm:w-full p-6 flex md:flex-row sm:flex-col justify-between ">
@@ -33,17 +33,17 @@ const Footer = () => {
         <div className="flex flex-col sm:mb-4 sm:items-center md:items-left">
           <p className="text-xl font-medium">Socials</p>
           <Link href="https://www.linkedin.com/in/shoeb-ilyas/">
-            <a target="_blank">
+            <a target="_blank" className="sm:text-4xl">
               <AiFillInstagram
-                size={24}
+                // size={24}
                 className="hover:text-white hover:cursor-pointer"
               />
             </a>
           </Link>
           <Link href="https://www.instagram.com/shoebilyas123/">
-            <a target="_blank">
+            <a target="_blank" className="sm:text-4xl">
               <AiFillLinkedin
-                size={24}
+                // size={24}
                 className="hover:text-white hover:cursor-pointer"
               />
             </a>

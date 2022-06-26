@@ -61,10 +61,10 @@ const BlogPage: NextPage<IProps> = (props) => {
           </h1>
           <hr />
           <div className="flex md:flex-row sm:flex-col justify-between md:items-center sm:mt-4 md:mt-0">
-            <p style={{ color: "var(--font-purple)" }}>
+            {/* <p style={{ color: "var(--font-purple)" }}>
               <i>written by </i>
               <strong>Shoeb Ilyas</strong>
-            </p>
+            </p> */}
             <p
               className="text-gray-400 my-3"
               style={{ color: "var(--font-purple)" }}
