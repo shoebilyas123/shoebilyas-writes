@@ -54,12 +54,13 @@ const BlogPage: NextPage<IProps> = (props) => {
         </div>
         <div className="lg:w-11/12 md:w-full sm:w-full h-fit lg:mt-4 bg-white shadow-lg p-6">
           <h1
-            className="font-bold text-4xl"
+            className="font-bold text-4xl sm:mb-4 md:mb-6"
             style={{ color: "var(--font-purple-dark)" }}
           >
             {blog.title}
           </h1>
-          <div className="flex flex-row justify-between items-center">
+          <hr />
+          <div className="flex md:flex-row sm:flex-col justify-between md:items-center sm:mt-4 md:mt-0">
             <p style={{ color: "var(--font-purple)" }}>
               <i>written by </i>
               <strong>Shoeb Ilyas</strong>
@@ -72,6 +73,7 @@ const BlogPage: NextPage<IProps> = (props) => {
             </p>
           </div>
           <hr />
+          <div className="mb-8"></div>
           {/* <div style={{ fontSize: "25px" }}> */}
           {/* <ReactMarkdown>{blog.content.markdown}</ReactMarkdown> */}
           {/* </div> */}

@@ -31,7 +31,7 @@ const BlogItem: React.FC<IProps> = ({ blog }) => {
         </Overlay>
       )}
       <div
-        className={`w-full p-2 mb-2 flex flex-col justify-center ${classes["blog-item"]} shadow-sm hover:shadow-lg`}
+        className={`w-full p-2 mb-4 flex flex-col justify-center ${classes["blog-item"]} shadow-sm hover:shadow-lg`}
       >
         <h1 className="font-medium text-2xl ml-2">{blog.title}</h1>
         <p
