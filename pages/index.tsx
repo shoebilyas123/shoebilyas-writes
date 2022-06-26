@@ -51,16 +51,18 @@ const Home: NextPage<IProps & AppProps> = ({ blogList }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="Since a very young age, I have a passion for writing and there is no alternative than online bloggin that shall help me convey my message to a greater number of audiences."
+          content="Since a very young age, I have a passion for writing. There is not a specific domain in
+          which I write. Philosophy, self-help, productivity, inspirational,
+          socio-economic issues etc., whichever topic gets my attention."
         />
         <title>ShoebIlyas Writes</title>
       </Head>
 
-      {showNewsletter && (
+      {/* {showNewsletter && (
         <Overlay onClose={closeNewsLetter}>
           <Newsletter onClose={closeNewsLetter} />
         </Overlay>
-      )}
+      )} */}
       <Navbar />
       <div className={`w-full h-screen flex flex-col md:items-center mt-4`}>
         <main className="md:w-3/5 px-2 sm:w-full sm:px-6 mb-auto sm:px-1">

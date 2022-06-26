@@ -16,13 +16,11 @@ const Footer = () => {
           <div className="flex flex-col text-xl font-medium sm:text-center md:text-left">
             Shoeb Ilyas
           </div>
-          <p>
-            We all have heard this phrase a gazillion times that we should not
-            compare ourselves with others but it is ubiquitous that people
-            don&#39;t apply this in their life. One of the reasons is the
-            company they surround themselves with and the thoughts that dominate
-            their mind. Now this require a separate article to be talked about.
-          </p>
+          <i>
+            Thanks for reading my article. There is not a specific domain in
+            which I write. Philosophy, self-help, productivity, inspirational,
+            socio-economic issues etc., whichever topic gets my attention.{" "}
+          </i>
         </div>
         <div className="sm:w-full md:w-auto flex flex-col sm:mb-4 sm:items-center md:items-left">
           <p className="text-xl font-medium sm:text-center md:text-left mb-2">
@@ -51,9 +49,9 @@ const Footer = () => {
             </a>
           </Link>
         </div>
-        <div className="flex flex-col sm:w-full sm:items-center md:items-left md:w-auto">
+        {/* <div className="flex flex-col sm:w-full sm:items-center md:items-left md:w-auto">
           <NewsletterInput isFooter={true} />
-        </div>
+        </div> */}
       </div>
     </footer>
   );
