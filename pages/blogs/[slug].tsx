@@ -14,9 +14,11 @@ import Overlay from "../../components/Overlay";
 import Loader from "../../components/Loader";
 import Navbar from "../../components/Navbar";
 import useLoading from "../../Hooks/useLoading";
+import Head from "next/head";
+import { IBlog } from "../../interface/blogs";
 
 interface IProps {
-  blog: any;
+  blog: IBlog;
 }
 
 const BlogPage: NextPage<IProps> = (props) => {
@@ -25,6 +27,11 @@ const BlogPage: NextPage<IProps> = (props) => {
 
   return (
     <div className="w-full flex flex-col items-center">
+      <Head>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="description" content={`${blog.summary}`} />
+        <title>{blog.title}</title>
+      </Head>
       <Navbar />
 
       {loading && (

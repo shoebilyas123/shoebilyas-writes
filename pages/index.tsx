@@ -47,8 +47,17 @@ const Home: NextPage<IProps & AppProps> = ({ blogList }) => {
 
   return (
     <>
+      <Head>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="description"
+          content="Since a very young age, I have a passion for writing and there is no alternative than online bloggin that shall help me convey my message to a greater number of audiences."
+        />
+        <title>ShoebIlyas Writes</title>
+      </Head>
+
       {showNewsletter && (
-        <Overlay>
+        <Overlay onClose={closeNewsLetter}>
           <Newsletter onClose={closeNewsLetter} />
         </Overlay>
       )}
@@ -57,8 +66,8 @@ const Home: NextPage<IProps & AppProps> = ({ blogList }) => {
         <main className="w-3/5 px-2 mb-auto">
           <Input value={search} onChange={searchChangeHandler} />
           <div className="w-3/5 flex flex-col justify-center items-center mt-4">
-            {blogs.map((blog: any) => (
-              <BlogItem blog={blog} />
+            {blogs.map((blog) => (
+              <BlogItem key={blog.id} blog={blog} />
             ))}
           </div>
         </main>

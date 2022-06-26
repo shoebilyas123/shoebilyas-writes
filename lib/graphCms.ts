@@ -1,6 +1,4 @@
 import { gql, GraphQLClient } from "graphql-request";
-import matter from "gray-matter";
-import config from "./config";
 
 import { IBlog, IBlogItem } from "../interface/blogs";
 
@@ -17,6 +15,7 @@ export async function getBlogBySlug(slug: string) {
         html
       }
       createdAt
+      summary
     }
   }
   `;
