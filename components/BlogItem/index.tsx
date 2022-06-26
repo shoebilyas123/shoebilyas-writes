@@ -39,13 +39,15 @@ const BlogItem: React.FC<IProps> = ({ blog }) => {
         >
           ...{blog.summary}...
         </p>
-        <div className="flex justify-between items-center">
-          <div className="flex items-center text-gray-600 text-sm">
+        <div className="flex md:justify-between md:items-center sm:justify-begin sm:flex-col md:flex-row">
+          <div className="flex items-center text-gray-600 text-sm sm:ml-2 md:ml-none">
             <span className="font-medium ">Published - </span>
             <span>{moment(blog.createdAt).format("LL")}</span>
           </div>
           <Link href={`/blogs/${blog.slug}`}>
-            <Button onClick={initiateLoading}>Read</Button>
+            <Button onClick={initiateLoading} className="mt-4">
+              Read
+            </Button>
           </Link>
         </div>
       </div>
