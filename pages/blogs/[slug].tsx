@@ -68,7 +68,7 @@ const BlogPage: NextPage<IProps> = (props) => {
               className="text-gray-400 my-3"
               style={{ color: "var(--font-purple)" }}
             >
-              Published At {moment(blog.createdAt).format("LL")}
+              Published on {moment(blog.createdAt).format("LL")}
             </p>
           </div>
           <hr />
