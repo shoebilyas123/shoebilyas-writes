@@ -83,7 +83,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const blog = await getBlogBySlug(context.params?.slug || "");
+  const slug = context.params?.slug;
+  const blog = await getBlogBySlug(`${slug}` || "");
 
   return {
     props: {
