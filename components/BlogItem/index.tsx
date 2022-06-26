@@ -45,7 +45,7 @@ const BlogItem: React.FC<IProps> = ({ blog }) => {
             <span>{moment(blog.createdAt).format("LL")}</span>
           </div>
           <Link href={`/blogs/${blog.slug}`}>
-            <Button onClick={initiateLoading} className="mt-4">
+            <Button onClick={initiateLoading} className="mt-4 ml-auto">
               Read
             </Button>
           </Link>
