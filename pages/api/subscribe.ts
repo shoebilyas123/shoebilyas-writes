@@ -16,29 +16,30 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
 async function subscribe(req: NextApiRequest, res: NextApiResponse<Data>) {
   try {
-    const { emailId } = req.body;
-
-    console.log({ emailId });
+    const { email, name } = req.body;
 
     await mongoConnect();
-    const subscriber = await Subscriber.findOne({ email: emailId });
+    const subscriber = await Subscriber.findOne({ email, name });
 
     if (subscriber && subscriber._id) {
       return res.status(409).json({
         message: "You are already subscribed to my newsletter. Thanks tho ;)",
       });
     }
+    const emailRegex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
 
-    if (!emailId) {
-      return res
-        .status(400)
-        .json({ message: "please provide your email to subscribe" });
+    if (!email || !emailRegex.test(email)) {
+      return res.status(400).json({ message: "Please enter a valid email!" });
     }
 
-    await Subscriber.create({ email: emailId });
+    if (!name) {
+      return res.status(400).json({ message: "Please enter a name!" });
+    }
+
+    await Subscriber.create({ email, name });
 
     res.status(200).json({
-      message: "Thanks for subscribing to my newsletter! Keep reading ;)",
+      message: `Welcome aboard ${name}! Thanks for subscribing to my newsletter! Keep reading ;)`,
     });
   } catch (err) {
     console.log(err);

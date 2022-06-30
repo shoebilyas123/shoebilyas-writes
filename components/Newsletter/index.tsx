@@ -16,18 +16,37 @@ const Newsletter: React.FC<IProps> = ({ onClose }) => {
   const { loading, initiateLoading, cancelLoading } = useLoading();
 
   const [hasSubscribed, setHasSubscribed] = useState<boolean>(false);
+  const [successMessage, setSuccessMessage] = useState<string>("");
   const [error, setError] = useState<string>("");
 
-  const subscribeCallHandler = async (email: string) => {
+  const subscribeCallHandler = async ({
+    email,
+    name,
+  }: {
+    email: string;
+    name: string;
+  }) => {
     try {
       initiateLoading();
-      const response = await axios.post("/api/subscribe", { emailId: email });
-      console.log(response);
+      const response = await axios.post("/api/subscribe", {
+        email,
+        name,
+      });
+      setSuccessMessage(response.data.message);
       setHasSubscribed(true);
       cancelLoading();
     } catch (err) {
-      if ((err as any)?.response?.status === 409) {
+      console.log(err);
+      const errorCode = (err as any)?.response?.status;
+      if (errorCode === 409) {
         setError("Already subscribed!");
+      } else if (errorCode === 400) {
+        const errMsg = (err as any).response?.data.message;
+        if (errMsg.toLowerCase().includes("name")) {
+          setError(errMsg);
+        } else {
+          setError("Please provide a valid email");
+        }
       }
       cancelLoading();
       setHasSubscribed(false);
@@ -47,8 +66,8 @@ const Newsletter: React.FC<IProps> = ({ onClose }) => {
           Stay up to date with my latest articles.
         </div>
         {hasSubscribed ? (
-          <p className="font-bold text-2xl text-orange-600  flex items-center px-4">
-            <span>{"Thanks for Subscribing!"}</span>
+          <p className="font-bold text-xl text-orange-600  flex items-center px-4">
+            <span>{`${successMessage}`}</span>
           </p>
         ) : (
           <div className="w-full px-4 mt-6 flex flex-col">
