@@ -1,11 +1,16 @@
 import Link from "next/link";
 import React from "react";
 import { AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
+import Button from "../Button";
+import Newsletter from "../Newsletter";
 import NewsletterInput from "../Newsletter/NewsletterInput";
+import Overlay from "../Overlay";
 
 import classes from "./Footer.module.css";
 
 const Footer = () => {
+  const [showNewsletter, setShowNewsletter] = React.useState(false);
+
   return (
     <footer
       className={`${classes.footer} lg:mt-6 w-full flex flex-row items-center justify-center text-gray-200`}
@@ -49,9 +54,16 @@ const Footer = () => {
             </a>
           </Link>
         </div>
-        {/* <div className="flex flex-col sm:w-full sm:items-center md:items-left md:w-auto">
-          <NewsletterInput isFooter={true} />
-        </div> */}
+        <div className="flex flex-col sm:w-full sm:items-center md:items-left md:w-auto">
+          <Button className="py-2" onClick={() => setShowNewsletter(true)}>
+            <span className="animate-bounce">Newsletter</span>
+          </Button>
+        </div>
+        {showNewsletter && (
+          <Overlay>
+            <Newsletter onClose={() => setShowNewsletter(false)} />
+          </Overlay>
+        )}
       </div>
     </footer>
   );

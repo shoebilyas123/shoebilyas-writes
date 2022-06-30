@@ -2,6 +2,8 @@ import React from "react";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
+
 import Input from "../components/Input";
 import classes from "../styles/Home.module.css";
 import BlogItem from "../components/BlogItem";
@@ -14,6 +16,7 @@ import Overlay from "../components/Overlay";
 import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
+import { setSeen } from "../store/slice/newsletter";
 
 interface IProps {
   blogList: IBlogItem[];
@@ -23,14 +26,17 @@ interface IState {
   blogs: IBlogItem[];
 }
 const Home: NextPage<IProps & AppProps> = ({ blogList }) => {
+  const dispatch = useDispatch();
+  const { isSeen } = useSelector((state: any) => state.newsletter);
   const [search, setSearch] = React.useState<string>("");
   const [isSearching, setIsSearching] = React.useState<boolean>(false);
   const [blogs, setBlogs] = React.useState<IState["blogs"]>(blogList);
   const [showNewsletter, setShowNewsletter] = React.useState<boolean>(true);
 
   const closeNewsLetter = () => {
-    setShowNewsletter(false);
+    dispatch(setSeen());
   };
+
   const searchChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
     if (e.target.value === "") {
@@ -58,11 +64,11 @@ const Home: NextPage<IProps & AppProps> = ({ blogList }) => {
         <title>ShoebIlyas Writes</title>
       </Head>
 
-      {/* {showNewsletter && (
-        <Overlay onClose={closeNewsLetter}>
+      {!isSeen && (
+        <Overlay>
           <Newsletter onClose={closeNewsLetter} />
         </Overlay>
-      )} */}
+      )}
       <Navbar />
       <div className={`w-full flex flex-col md:items-center mt-4`}>
         <main className="md:w-3/5 sm:w-full sm:px-6 mb-auto sm:px-1 flex flex-col items-center mb-4 min-h-[69vh]">
