@@ -1,12 +1,11 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI =
-  process.env?.MONGO_URI?.replace(
-    "<USERNAME>",
-    process.env?.MONGO_USERNAME || ""
-  )
-    .replace("<PASSWORD>", process.env?.MONGO_PASSWORD || "")
-    .replace("<DB_NAME>", process.env?.DB_NAME || "") || "";
+const MONGODB_URI = process.env.MONGO_URI?.replace(
+  "<USERNAME>",
+  process.env?.MONGO_USERNAME || ""
+)
+  .replace("<PASSWORD>", process.env?.MONGO_PASSWORD || "")
+  .replace("<DB_NAME>", process.env?.DB_NAME || "");
 
 if (!MONGODB_URI) {
   throw new Error(
@@ -38,9 +37,11 @@ async function dbConnect() {
       bufferCommands: false,
     };
 
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      return mongoose;
-    });
+    cached.promise = mongoose
+      .connect(MONGODB_URI || "", opts)
+      .then((mongoose) => {
+        return mongoose;
+      });
   }
   cached.conn = await cached.promise;
   return cached.conn;
