@@ -66,8 +66,11 @@ const Newsletter: React.FC<IProps> = ({ onClose }) => {
           Stay up to date with my latest articles.
         </div>
         {hasSubscribed ? (
-          <p className="font-bold text-xl text-orange-600  flex items-center px-4">
+          <p className="font-medium text-gray-700  flex flex-col items-center px-4">
             <span>{`${successMessage}`}</span>
+            <span className="mt-2 text-green-700">
+              Subscripition confirmation has been emailed to you.
+            </span>
           </p>
         ) : (
           <div className="w-full px-4 mt-6 flex flex-col">

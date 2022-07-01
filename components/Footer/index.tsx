@@ -37,7 +37,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-col sm:mb-4 sm:items-center md:items-left">
           <p className="text-xl font-medium">Socials</p>
-          <Link href="https://www.linkedin.com/in/shoeb-ilyas/">
+          <Link href="https://www.instagram.com/shoebilyas123/">
             <a target="_blank" className="sm:text-4xl">
               <AiFillInstagram
                 // size={24}
@@ -45,7 +45,7 @@ const Footer = () => {
               />
             </a>
           </Link>
-          <Link href="https://www.instagram.com/shoebilyas123/">
+          <Link href="https://www.linkedin.com/in/shoeb-ilyas/">
             <a target="_blank" className="sm:text-4xl">
               <AiFillLinkedin
                 // size={24}
