@@ -3,7 +3,11 @@ import { IEmailParams } from "../interface/email";
 
 sgMail.setApiKey(process.env?.SHOEB_ILYAS_APP_KEY || "");
 
-export const sendNewSubscriberEmail = ({ to, name, id }: IEmailParams) => {
+export const sendNewSubscriberEmail = async ({
+  to,
+  name,
+  id,
+}: IEmailParams) => {
   console.log({ ASD: process.env?.SHOEB_ILYAS_APP_KEY });
   const msg = {
     to, // Change to your recipient
@@ -79,21 +83,10 @@ export const sendNewSubscriberEmail = ({ to, name, id }: IEmailParams) => {
 </html>
 `,
   };
-
-  sgMail
-    .send({
-      ...msg,
-    })
-    .then(() => {
-      console.log("Email sent");
-    })
-    .catch((error) => {
-      console.error(error);
-      console.error(error.body);
-    });
+  await sendEmail(msg);
 };
 
-export const sendUnsubscribeEmail = ({ to, name }: IEmailParams) => {
+export const sendUnsubscribeEmail = async ({ to, name }: IEmailParams) => {
   console.log({ to, name });
   const msg = {
     to,
@@ -103,12 +96,20 @@ export const sendUnsubscribeEmail = ({ to, name }: IEmailParams) => {
     html: `<strong>Hi ${name}. I am sorry to see you go. You have been unsubscribed from my articles. Keep reading :).</strong>`,
   };
 
-  sgMail
-    .send(msg)
-    .then(() => {
-      console.log("Email sent");
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  await sendEmail(msg);
+};
+
+interface ISendEmail {
+  to: string;
+  from: string;
+  subject: string;
+  text: string;
+  html: string;
+}
+
+export const sendEmail = async (payload: ISendEmail) => {
+  const response = await sgMail.send({
+    ...payload,
+  });
+  console.log(response);
 };
