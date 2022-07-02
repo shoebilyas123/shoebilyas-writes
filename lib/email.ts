@@ -4,6 +4,7 @@ import { IEmailParams } from "../interface/email";
 sgMail.setApiKey(process.env?.SHOEB_ILYAS_APP_KEY || "");
 
 export const sendNewSubscriberEmail = ({ to, name, id }: IEmailParams) => {
+  console.log({ ASD: process.env?.SHOEB_ILYAS_APP_KEY });
   const msg = {
     to, // Change to your recipient
     from: "shoebilyas432@gmail.com", // Change to your verified sender
@@ -95,8 +96,8 @@ export const sendNewSubscriberEmail = ({ to, name, id }: IEmailParams) => {
 export const sendUnsubscribeEmail = ({ to, name }: IEmailParams) => {
   console.log({ to, name });
   const msg = {
-    to, // Change to your recipient
-    from: "shoebilyas432@gmail.com", // Change to your verified sender
+    to,
+    from: "shoebilyas432@gmail.com",
     subject: "Newsletter unsubscribe confirmation!",
     text: "and easy to do anywhere, even with Node.js",
     html: `<strong>Hi ${name}. I am sorry to see you go. You have been unsubscribed from my articles. Keep reading :).</strong>`,
