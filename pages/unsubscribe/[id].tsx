@@ -122,8 +122,17 @@ export default Unsubscribe;
 export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
 ) => {
+  await mongoConnect();
   const text = context.params?.id || "";
   const id = `${text}`.substring(text.lastIndexOf("-") + 1);
+
+  const sub = await Subscriber.findById(id);
+
+  if (!sub || !sub.email) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {

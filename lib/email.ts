@@ -93,6 +93,7 @@ export const sendNewSubscriberEmail = ({ to, name, id }: IEmailParams) => {
 };
 
 export const sendUnsubscribeEmail = ({ to, name }: IEmailParams) => {
+  console.log({ to, name });
   const msg = {
     to, // Change to your recipient
     from: "shoebilyas432@gmail.com", // Change to your verified sender
