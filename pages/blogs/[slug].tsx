@@ -1,21 +1,19 @@
 import React from "react";
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import { GraphQLClient } from "graphql-request";
 import { BsArrowLeft } from "react-icons/bs";
-import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 import moment from "moment";
 import parser from "html-react-parser";
 
-import { getBlogBySlug, getBlogPaths } from "../../lib/graphCms";
-import Button from "../../components/Button";
-import Footer from "../../components/Footer";
-import Overlay from "../../components/Overlay";
-import Loader from "../../components/Loader";
-import Navbar from "../../components/Navbar";
-import useLoading from "../../Hooks/useLoading";
+import { getBlogBySlug, getBlogPaths } from "shoebilyas-common/lib/graphCms";
+import Button from "shoebilyas-common/components/Button";
+import Footer from "components/Footer";
+import Overlay from "shoebilyas-common/components/Overlay";
+import Loader from "shoebilyas-common/components/Loader";
+import Navbar from "shoebilyas-common/components/Navbar";
+import useLoading from "shoebilyas-common/Hooks/useLoading";
 import Head from "next/head";
-import { IBlog } from "../../interface/blogs";
+import { IBlog } from "shoebilyas-common/interface/blogs";
 
 interface IProps {
   blog: IBlog;

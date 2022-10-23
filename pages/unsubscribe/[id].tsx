@@ -5,16 +5,16 @@ import {
   NextPage,
 } from "next";
 import React from "react";
-import Button from "../../components/Button";
+import Button from "shoebilyas-common/components/Button";
 import axios from "axios";
 
-import Navbar from "../../components/Navbar";
-import Subscriber from "../../model/subscriber";
-import mongoConnect from "./../../lib/mongoConnect";
+import Navbar from "shoebilyas-common/components/Navbar";
+import Subscriber from "shoebilyas-common/model/subscriber";
+import mongoConnect from "shoebilyas-common/lib/mongoConnect";
 import Router from "next/router";
-import useLoading from "../../Hooks/useLoading";
-import Overlay from "../../components/Overlay";
-import Loader from "../../components/Loader";
+import useLoading from "shoebilyas-common/Hooks/useLoading";
+import Overlay from "shoebilyas-common/components/Overlay";
+import Loader from "shoebilyas-common/components/Loader";
 
 interface IProps {
   id: string;

@@ -1,10 +1,9 @@
 import Link from "next/link";
 import React from "react";
 import { AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
-import Button from "../Button";
+import Button from "shoebilyas-common/components/Button";
 import Newsletter from "../Newsletter";
-import NewsletterInput from "../Newsletter/NewsletterInput";
-import Overlay from "../Overlay";
+import Overlay from "shoebilyas-common/components/Overlay";
 
 import classes from "./Footer.module.css";
 

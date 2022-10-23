@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
-import useLoading from "../../Hooks/useLoading";
-import Button from "../Button";
-import Loader from "../Loader";
+import useLoading from "shoebilyas-common/Hooks/useLoading";
+import Button from "shoebilyas-common/components/Button";
+import Loader from "shoebilyas-common/components/Loader";
 
 interface IProps {
   isFooter?: boolean;

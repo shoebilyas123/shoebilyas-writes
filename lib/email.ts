@@ -1,5 +1,5 @@
 import sgMail from "@sendgrid/mail";
-import { IEmailParams } from "../interface/email";
+import { IEmailParams } from "shoebilyas-common/interface/email";
 
 sgMail.setApiKey(process.env?.SHOEB_ILYAS_APP_KEY || "");
 

@@ -1,0 +1,3 @@
+[submodule "shoebilyas-common"]
+	path = shoebilyas-common
+	url = https://github.com/shoebilyas123/shoebilyas-common.git

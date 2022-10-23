@@ -1,20 +1,16 @@
 import React from "react";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 
-import Input from "../components/Input";
-import classes from "../styles/Home.module.css";
+import Input from "shoebilyas-common/components/Input";
 import BlogItem from "../components/BlogItem";
-import { getAllBlogs } from "../lib/graphCms";
+import { getAllBlogs } from "shoebilyas-common/lib/graphCms";
 import { AppProps } from "next/app";
 import Footer from "../components/Footer";
-import { IBlogItem } from "../interface/blogs";
-import useLoading from "../Hooks/useLoading";
-import Overlay from "../components/Overlay";
-import Loader from "../components/Loader";
-import Navbar from "../components/Navbar";
+import { IBlogItem } from "shoebilyas-common/interface/blogs";
+import Overlay from "shoebilyas-common/components/Overlay";
+import Navbar from "shoebilyas-common/components/Navbar";
 import Newsletter from "../components/Newsletter";
 import { setSeen } from "../store/slice/newsletter";
 
@@ -31,7 +27,6 @@ const Home: NextPage<IProps & AppProps> = ({ blogList }) => {
   const [search, setSearch] = React.useState<string>("");
   const [isSearching, setIsSearching] = React.useState<boolean>(false);
   const [blogs, setBlogs] = React.useState<IState["blogs"]>(blogList);
-  const [showNewsletter, setShowNewsletter] = React.useState<boolean>(true);
 
   const closeNewsLetter = () => {
     dispatch(setSeen());

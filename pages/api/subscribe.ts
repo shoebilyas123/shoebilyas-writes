@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import Subscriber from "./../../model/subscriber";
-import mongoConnect from "./../../lib/mongoConnect";
+import Subscriber from "shoebilyas-common/model/subscriber";
+import mongoConnect from "shoebilyas-common/lib/mongoConnect";
 import { sendNewSubscriberEmail, sendUnsubscribeEmail } from "../../lib/email";
-import { IEmailParams } from "../../interface/email";
+import { IEmailParams } from "shoebilyas-common/interface/email";
 
 type Data = {
   message: string;

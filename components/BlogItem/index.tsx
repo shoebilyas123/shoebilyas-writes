@@ -1,12 +1,12 @@
 import React from "react";
-import Button from "../Button";
+import Button from "shoebilyas-common/components/Button";
 import moment from "moment";
 
 import classes from "./BlogItem.module.css";
 import Link from "next/link";
-import useLoading from "../../Hooks/useLoading";
-import Loader from "../Loader";
-import Overlay from "../Overlay";
+import useLoading from "shoebilyas-common/Hooks/useLoading";
+import Loader from "shoebilyas-common/components/Loader";
+import Overlay from "shoebilyas-common/components/Overlay";
 
 const DUMMYDATA = {
   id: Math.random().toString(32),

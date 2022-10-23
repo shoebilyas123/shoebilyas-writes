@@ -2,10 +2,10 @@ import axios from "axios";
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { IoIosHappy } from "react-icons/io";
-import useLoading from "../../Hooks/useLoading";
+import useLoading from "shoebilyas-common/Hooks/useLoading";
 
-import Button from "../Button";
-import Input from "../Input";
+import Button from "shoebilyas-common/components/Button";
+import Input from "shoebilyas-common/components/Input";
 import NewsletterInput from "./NewsletterInput";
 
 interface IProps {
