@@ -1,5 +1,5 @@
 import React from "react";
-import type { GetStaticProps, NextPage } from "next";
+import type { GetServerSideProps, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -85,7 +85,7 @@ const Home: NextPage<IProps & AppProps> = ({ blogList }) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const blogList: IBlogItem[] = await getAllBlogs();
   return { props: { blogList } };
 };

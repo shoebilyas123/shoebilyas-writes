@@ -1,5 +1,10 @@
 import React from "react";
-import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
+import type {
+  NextPage,
+  GetStaticPaths,
+  GetStaticProps,
+  GetServerSideProps,
+} from "next";
 import { BsArrowLeft } from "react-icons/bs";
 import Link from "next/link";
 import moment from "moment";
@@ -85,16 +90,7 @@ const BlogPage: NextPage<IProps> = (props) => {
 
 export default BlogPage;
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = await getBlogPaths();
-
-  return {
-    paths,
-    fallback: "blocking",
-  };
-};
-
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const slug = context.params?.slug;
   const blog = await getBlogBySlug(`${slug}` || "");
 
