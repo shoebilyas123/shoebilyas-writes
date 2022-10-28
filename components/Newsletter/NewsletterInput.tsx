@@ -10,6 +10,7 @@ interface IProps {
   loading: boolean;
   errorMessage: string;
   setErrorMessage: (param: string) => void;
+  theme: string;
 }
 
 const NewsletterInput: React.FC<IProps> = ({
@@ -18,6 +19,7 @@ const NewsletterInput: React.FC<IProps> = ({
   loading,
   errorMessage,
   setErrorMessage,
+  theme,
 }) => {
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
@@ -58,22 +60,30 @@ const NewsletterInput: React.FC<IProps> = ({
   return (
     <>
       {errorMessage ? (
-        <p className="text-red-700 p-1">{errorMessage}</p>
+        <p className="text-red-700 p-1">{errorMessage || "sadasds"}</p>
       ) : (
         !isValidEmail && (
           <p className="text-red-700 p-1">Please enter a valid email!</p>
         )
       )}
-      <label htmlFor="name" className="px-1 pb-1 text-gray-900">
+      <label
+        htmlFor="name"
+        className="px-1 pb-1 text-gray-900 dark:text-slate-200"
+      >
         Name
       </label>
       <input
         autoComplete="false"
         id="name"
         value={name}
-        className="px-4 py-2 mb-2 w-full placeholder-gray-600 font-medium"
+        className="px-4 py-2 mb-2 w-full placeholder-gray-600 dark:placeholder-zinc-500 font-medium"
         style={{
-          color: isFooter ? "rgb(200,200,200)" : "var(--font-purple-dark)",
+          color:
+            theme === "dark"
+              ? ""
+              : isFooter
+              ? "rgb(200,200,200)"
+              : "var(--font-purple-dark)",
           background: "rgba(0,0,0,.15)",
           outline: "none",
           borderRadius: "7.5px",
@@ -82,16 +92,24 @@ const NewsletterInput: React.FC<IProps> = ({
         placeholder={`My name is...`}
       />
 
-      <label htmlFor="email" className="px-1 pb-1 text-gray-900 pt-2">
+      <label
+        htmlFor="email"
+        className="px-1 pb-1 text-gray-900 pt-2 dark:text-slate-200"
+      >
         Email
       </label>
       <input
         autoComplete="false"
         id="email"
         value={email}
-        className="px-4 py-2 mb-2 w-full placeholder-gray-600 font-medium"
+        className="px-4 py-2 mb-2 w-full placeholder-gray-600 font-medium dark:placeholder:text-zinc-500"
         style={{
-          color: isFooter ? "rgb(200,200,200)" : "var(--font-purple-dark)",
+          color:
+            theme === "dark"
+              ? ""
+              : isFooter
+              ? "rgb(200,200,200)"
+              : "var(--font-purple-dark)",
           background: "rgba(0,0,0,.15)",
           outline: "none",
           borderRadius: "7.5px",

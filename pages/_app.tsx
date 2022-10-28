@@ -9,8 +9,8 @@ import { ThemeProvider } from "next-themes";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <ThemeProvider defaultTheme="dark">
-        <Component {...pageProps} />;
+      <ThemeProvider enableSystem={true} attribute="class" defaultTheme="dark">
+        <Component {...pageProps} />
       </ThemeProvider>
     </Provider>
   );

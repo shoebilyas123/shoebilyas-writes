@@ -1,21 +1,22 @@
 import Link from "next/link";
 import React from "react";
 import { AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
+import { useTheme } from "next-themes";
+
 import Button from "shoebilyas-common/components/Button";
 import Newsletter from "../Newsletter";
 import Overlay from "shoebilyas-common/components/Overlay";
 
-import classes from "./Footer.module.css";
-
 const Footer = () => {
   const [showNewsletter, setShowNewsletter] = React.useState(false);
+  const { theme } = useTheme();
 
   return (
     <footer
-      className={`${classes.footer} lg:mt-6 w-full flex flex-row items-center justify-center text-gray-200`}
-      style={{ background: "var(--font-purple-dark)" }}
+      className={`mt-4 w-full flex flex-row items-center justify-center text-gray-200 dark:bg-black dark:border-0 dark:border-t dark:border-zinc-800 dark:bg-opacity-15`}
+      style={{ background: theme === "dark" ? "" : "var(--font-purple-dark)" }}
     >
-      <div className="md:w-4/5 lg:w-1/2 sm:w-full p-6 flex md:flex-row sm:flex-col justify-between ">
+      <div className="md:w-4/5 lg:w-1/2 sm:w-full p-8 flex md:flex-row sm:flex-col justify-between ">
         <div className="md:w-1/2 sm:w-full sm:mb-4 text-sm">
           <div className="flex flex-col text-xl font-medium sm:text-center md:text-left">
             Shoeb Ilyas

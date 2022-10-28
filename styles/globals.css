@@ -13,13 +13,19 @@
   --orange: #f2994a;
 }
 
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-pink-100 to-purple-400 dark:bg-gradient-to-br dark:from-black dark:to-slate-900;
+  }
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Quicksand", sans-serif;
-  background: linear-gradient(-45deg, var(--theme-pink), var(--theme-purple));
+  /* background: linear-gradient(-45deg, var(--theme-pink), var(--theme-purple)); */
 }
 
 a {
@@ -36,7 +42,6 @@ a {
 .blog-logo {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
-  color: var(--font-purple);
 }
 
 nav {

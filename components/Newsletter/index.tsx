@@ -2,8 +2,9 @@ import axios from "axios";
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { IoIosHappy } from "react-icons/io";
-import useLoading from "shoebilyas-common/Hooks/useLoading";
+import { useTheme } from "next-themes";
 
+import useLoading from "shoebilyas-common/Hooks/useLoading";
 import Button from "shoebilyas-common/components/Button";
 import Input from "shoebilyas-common/components/Input";
 import NewsletterInput from "./NewsletterInput";
@@ -18,6 +19,7 @@ const Newsletter: React.FC<IProps> = ({ onClose }) => {
   const [hasSubscribed, setHasSubscribed] = useState<boolean>(false);
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const { theme } = useTheme();
 
   const subscribeCallHandler = async ({
     email,
@@ -54,21 +56,21 @@ const Newsletter: React.FC<IProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
-      <div className="flex flex-row justify-end px-2 py-2 pb-0 text-xl text-gray-600">
+    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white dark:bg-zinc-900 dark:border dark:border-zinc-800 ">
+      <div className="flex flex-row justify-end px-2 py-2 pb-0 text-xl text-gray-600 dark:text-white">
         <IoClose onClick={onClose} className="cursor-pointer" />
       </div>
       <div className="flex flex-col items-left px-6 py-4">
         <div
           className="font-bold text-3xl m-4"
-          style={{ color: "var(--font-purple)" }}
+          style={{ color: theme ? "" : "var(--font-purple)" }}
         >
           Stay up to date with my latest articles.
         </div>
         {hasSubscribed ? (
-          <p className="font-medium text-gray-700  flex flex-col items-center px-4">
-            <span>{`${successMessage}`}</span>
-            <span className="mt-2 text-green-700">
+          <p className="font-medium text-gray-700 dark:text-slate-200 flex flex-col items-center px-4">
+            <span>{`${successMessage} asddsd`}</span>
+            <span className="mt-2 text-green-500">
               Subscripition confirmation has been emailed to you.
             </span>
           </p>
@@ -79,6 +81,7 @@ const Newsletter: React.FC<IProps> = ({ onClose }) => {
               loading={loading}
               errorMessage={error}
               setErrorMessage={setError}
+              theme={theme || ""}
             />
           </div>
         )}

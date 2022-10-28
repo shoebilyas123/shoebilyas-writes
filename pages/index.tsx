@@ -27,6 +27,7 @@ const Home: NextPage<IProps & AppProps> = ({ blogList }) => {
   const [search, setSearch] = React.useState<string>("");
   const [isSearching, setIsSearching] = React.useState<boolean>(false);
   const [blogs, setBlogs] = React.useState<IState["blogs"]>(blogList);
+  const [filteredBlogs, setFilteredBlogs] = React.useState<IState["blogs"]>([]);
 
   const closeNewsLetter = () => {
     dispatch(setSeen());
@@ -37,10 +38,11 @@ const Home: NextPage<IProps & AppProps> = ({ blogList }) => {
     if (e.target.value === "") {
       setIsSearching(false);
       setBlogs(blogList);
+      setFilteredBlogs([]);
     } else {
       const searchTerm = new RegExp(search.toLowerCase(), "g");
-      setBlogs((prev) =>
-        prev.filter((blog) => blog.title.toLowerCase().search(searchTerm) > -1)
+      setFilteredBlogs(
+        blogs.filter((blog) => blog.title.toLowerCase().search(searchTerm) > -1)
       );
       setIsSearching(true);
     }
@@ -66,13 +68,13 @@ const Home: NextPage<IProps & AppProps> = ({ blogList }) => {
       )}
       <Navbar />
       <div className={`w-full flex flex-col md:items-center mt-4`}>
-        <main className="md:w-3/5 sm:w-full sm:px-6 mb-auto sm:px-1 flex flex-col items-center mb-4 min-h-[69vh]">
+        <main className="md:w-3/5 sm:w-full mb-auto sm:px-1 flex flex-col items-center min-h-[69vh]">
           <div className="sm:w-11/12 md:w-4/12 my-8">
             <Input value={search} onChange={searchChangeHandler} />
           </div>
           {/* <div className="md:w-4/5 lg:w-3/5 px-4 sm:w-full flex flex-col justify-center items-center mt-4"> */}
           <div className="px-4 grid md:grid-cols-2 sm:grid-cols-1 gap-4">
-            {blogs.map((blog) => (
+            {(filteredBlogs.length > 0 ? filteredBlogs : blogs).map((blog) => (
               <BlogItem key={blog.id} blog={blog} />
             ))}
           </div>

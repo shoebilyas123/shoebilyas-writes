@@ -9,15 +9,16 @@ import { BsArrowLeft } from "react-icons/bs";
 import Link from "next/link";
 import moment from "moment";
 import parser from "html-react-parser";
+import Head from "next/head";
+import { useTheme } from "next-themes";
 
-import { getBlogBySlug, getBlogPaths } from "shoebilyas-common/lib/graphCms";
 import Button from "shoebilyas-common/components/Button";
+import { getBlogBySlug, getBlogPaths } from "shoebilyas-common/lib/graphCms";
 import Footer from "components/Footer";
 import Overlay from "shoebilyas-common/components/Overlay";
 import Loader from "shoebilyas-common/components/Loader";
 import Navbar from "shoebilyas-common/components/Navbar";
 import useLoading from "shoebilyas-common/Hooks/useLoading";
-import Head from "next/head";
 import { IBlog } from "shoebilyas-common/interface/blogs";
 
 interface IProps {
@@ -27,6 +28,7 @@ interface IProps {
 const BlogPage: NextPage<IProps> = (props) => {
   const { blog } = props;
   const { loading, initiateLoading } = useLoading();
+  const { theme } = useTheme();
 
   return (
     <div className="w-full flex flex-col items-center">
@@ -48,17 +50,23 @@ const BlogPage: NextPage<IProps> = (props) => {
           <Link href="/">
             <Button
               onClick={initiateLoading}
-              className="sm:p-4 rounded-full lg:rounded lg:px-4 lg:py-2"
+              className={
+                "sm:p-4 rounded-full lg:rounded lg:px-4 lg:py-2 w-fit flex items-center text-white px-5 py-1 hover:shadow outline-none"
+              }
+              style={{
+                background:
+                  "linear-gradient(-45deg, var(--orange), var(--red))",
+              }}
             >
               <BsArrowLeft />
               <span className="sm:hidden lg:block ml-2">Go Back</span>
             </Button>
           </Link>
         </div>
-        <div className="lg:w-11/12 md:w-full sm:w-full h-fit lg:mt-4 bg-white shadow-lg p-6">
+        <div className="lg:w-11/12 md:w-full sm:w-full h-fit lg:mt-4 bg-white dark:bg-black dark:bg-opacity-25 shadow-lg p-6">
           <h1
             className="font-bold text-4xl sm:mb-4 md:mb-6"
-            style={{ color: "var(--font-purple-dark)" }}
+            style={{ color: theme === "dark" ? "" : "var(--font-purple-dark)" }}
           >
             {blog.title}
           </h1>
@@ -70,7 +78,9 @@ const BlogPage: NextPage<IProps> = (props) => {
             </p> */}
             <p
               className="text-gray-400 my-3"
-              style={{ color: "var(--font-purple)" }}
+              style={{
+                color: theme === "dark" ? "gray" : "var(--font-purple)",
+              }}
             >
               Published on {moment(blog.createdAt).format("LL")}
             </p>
@@ -80,7 +90,9 @@ const BlogPage: NextPage<IProps> = (props) => {
           {/* <div style={{ fontSize: "25px" }}> */}
           {/* <ReactMarkdown>{blog.content.markdown}</ReactMarkdown> */}
           {/* </div> */}
-          <p className="text-24 mt-4">{parser(blog.content)}</p>
+          <p className="text-xl mt-4 dark:text-slate-200  dark:bg-opacity-0">
+            {parser(blog.content)}
+          </p>
         </div>
       </div>
       <Footer />
