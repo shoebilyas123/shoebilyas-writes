@@ -63,7 +63,7 @@ const BlogPage: NextPage<IProps> = (props) => {
             </Button>
           </Link>
         </div>
-        <div className="lg:w-11/12 md:w-full sm:w-full h-fit lg:mt-4 bg-white dark:bg-black dark:bg-opacity-25 shadow-lg p-6">
+        <div className="lg:w-11/12 md:w-full sm:w-full h-fit lg:mt-4 bg-white dark:bg-zinc-900 dark:bg-opacity-100 shadow-lg p-6">
           <h1
             className="font-bold text-4xl sm:mb-4 md:mb-6"
             style={{ color: theme === "dark" ? "" : "var(--font-purple-dark)" }}

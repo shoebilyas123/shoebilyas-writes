@@ -33,7 +33,7 @@ const BlogItem: React.FC<IProps> = ({ blog }) => {
         </Overlay>
       )}
       <div
-        className={`w-full p-4 flex md:mb-0 flex-col justify-between bg-white dark:bg-black dark:bg-opacity-25 dark:border dark:border-zinc-900 border border-transparent transition dark:hover:border-orange-800 rounded-md  shadow-sm hover:shadow-lg`}
+        className={`w-full p-4 flex md:mb-0 flex-col justify-between bg-white dark:bg-zinc-900 dark:bg-opacity-25 dark:border dark:border-zinc-900 border border-transparent transition dark:hover:border-orange-800 rounded-md  shadow-sm hover:shadow-lg`}
       >
         <div>
           <h1
