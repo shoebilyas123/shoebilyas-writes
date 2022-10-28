@@ -99,7 +99,13 @@ const NewsletterInput: React.FC<IProps> = ({
         onChange={emailChangeHandler}
         placeholder={`My email is...`}
       />
-      <Button className="w-max my-8 py-2" onClick={subscriberHandler}>
+      <Button
+        className="w-max my-8 py-2 flex items-center text-white rounded-md px-5 hover:shadow outline-none"
+        style={{
+          background: "linear-gradient(-45deg, var(--orange), var(--red))",
+        }}
+        onClick={subscriberHandler}
+      >
         <span>{`${
           loading ? "Please wait..." : "Try The Free Newsletter"
         }`}</span>

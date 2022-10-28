@@ -54,7 +54,7 @@ const Footer = () => {
           </Link>
         </div>
         <div className="flex flex-col sm:w-full sm:items-center md:items-left md:w-auto">
-          <Button className="py-2" onClick={() => setShowNewsletter(true)}>
+          <Button onClick={() => setShowNewsletter(true)}>
             <span className="animate-bounce">Newsletter</span>
           </Button>
         </div>

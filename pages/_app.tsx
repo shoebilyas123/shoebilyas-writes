@@ -4,11 +4,14 @@ import Navbar from "shoebilyas-common/components/Navbar";
 import Footer from "../components/Footer";
 import { Provider } from "react-redux";
 import store from "../store/store";
+import { ThemeProvider } from "next-themes";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <Component {...pageProps} />;
+      <ThemeProvider defaultTheme="dark">
+        <Component {...pageProps} />;
+      </ThemeProvider>
     </Provider>
   );
 }
