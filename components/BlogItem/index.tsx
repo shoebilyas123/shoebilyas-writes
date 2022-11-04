@@ -2,12 +2,14 @@ import React from "react";
 import Button from "shoebilyas-common/components/Button";
 import moment from "moment";
 import { useTheme } from "next-themes";
+import { HiShare } from "react-icons/hi";
 
 import classes from "./BlogItem.module.css";
 import Link from "next/link";
 import useLoading from "shoebilyas-common/Hooks/useLoading";
 import Loader from "shoebilyas-common/components/Loader";
 import Overlay from "shoebilyas-common/components/Overlay";
+import { IBlogItem } from "shoebilyas-common/interface/blogs";
 
 const DUMMYDATA = {
   id: Math.random().toString(32),
@@ -18,12 +20,32 @@ const DUMMYDATA = {
 };
 
 interface IProps {
-  blog: any;
+  blog: IBlogItem;
+}
+
+interface IShareData {
+  title: string;
+  text: string;
+  url: string;
 }
 
 const BlogItem: React.FC<IProps> = ({ blog }) => {
   const { loading, initiateLoading } = useLoading();
   const { theme } = useTheme();
+
+  const webshareHandler = async () => {
+    const shareData: IShareData = {
+      title: blog.title,
+      text: blog.summary,
+      url: `https://shoebilyas.com/blogs/${blog.slug}`,
+    };
+
+    try {
+      await navigator.share(shareData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -57,9 +79,18 @@ const BlogItem: React.FC<IProps> = ({ blog }) => {
               <span className="font-medium ">Published - </span>
               <span>{moment(blog.createdAt).format("LL")}</span>
             </div>
-            <Link href={`/blogs/${blog.slug}`}>
-              <Button onClick={initiateLoading}>Read</Button>
-            </Link>
+            <div className="flex space-x-2">
+              <Button
+                onClick={webshareHandler}
+                className="border  border-white px-4 py-1 rounded-lg hover:bg-white hover:text-zinc-900 transition-all"
+              >
+                <HiShare />
+                {/* Share */}
+              </Button>
+              <Link href={`/blogs/${blog.slug}`}>
+                <Button onClick={initiateLoading}>Read</Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
