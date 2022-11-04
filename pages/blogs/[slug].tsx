@@ -19,16 +19,18 @@ import Overlay from "shoebilyas-common/components/Overlay";
 import Loader from "shoebilyas-common/components/Loader";
 import Navbar from "shoebilyas-common/components/Navbar";
 import useLoading from "shoebilyas-common/Hooks/useLoading";
-import { IBlog } from "shoebilyas-common/interface/blogs";
+import { IBlogItem } from "shoebilyas-common/interface/blogs";
+import ShareButton from "components/ShareButton";
 
 interface IProps {
-  blog: IBlog;
+  blog: IBlogItem;
 }
 
 const BlogPage: NextPage<IProps> = (props) => {
   const { blog } = props;
   const { loading, initiateLoading } = useLoading();
   const { theme } = useTheme();
+  console.log(blog);
 
   return (
     <div className="w-full flex flex-col items-center">
@@ -71,7 +73,7 @@ const BlogPage: NextPage<IProps> = (props) => {
             {blog.title}
           </h1>
           <hr />
-          <div className="flex md:flex-row sm:flex-col justify-between md:items-center sm:mt-4 md:mt-0">
+          <div className="flex md:flex-row justify-between md:items-center sm:items-center sm:mt-4 sm:mb-4 md:mb-0 md:mt-0">
             {/* <p style={{ color: "var(--font-purple)" }}>
               <i>written by </i>
               <strong>Shoeb Ilyas</strong>
@@ -84,6 +86,11 @@ const BlogPage: NextPage<IProps> = (props) => {
             >
               Published on {moment(blog.createdAt).format("LL")}
             </p>
+            <ShareButton
+              title={blog.title}
+              text={blog.summary}
+              slug={blog.slug}
+            />
           </div>
           <hr />
           <div className="mb-8"></div>

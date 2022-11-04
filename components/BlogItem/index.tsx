@@ -10,6 +10,7 @@ import useLoading from "shoebilyas-common/Hooks/useLoading";
 import Loader from "shoebilyas-common/components/Loader";
 import Overlay from "shoebilyas-common/components/Overlay";
 import { IBlogItem } from "shoebilyas-common/interface/blogs";
+import ShareButton from "components/ShareButton";
 
 const DUMMYDATA = {
   id: Math.random().toString(32),
@@ -32,20 +33,6 @@ interface IShareData {
 const BlogItem: React.FC<IProps> = ({ blog }) => {
   const { loading, initiateLoading } = useLoading();
   const { theme } = useTheme();
-
-  const webshareHandler = async () => {
-    const shareData: IShareData = {
-      title: blog.title,
-      text: blog.summary,
-      url: `https://shoebilyas.com/blogs/${blog.slug}`,
-    };
-
-    try {
-      await navigator.share(shareData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <>
@@ -74,19 +61,20 @@ const BlogItem: React.FC<IProps> = ({ blog }) => {
           </span> */}
             {blog.summary.slice(0, 125)}...
           </p>
-          <div className="flex justify-between items-center">
-            <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm ml-2">
+          <div>
+            <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm ml-2 my-4">
               <span className="font-medium ">Published - </span>
               <span>{moment(blog.createdAt).format("LL")}</span>
             </div>
+          </div>
+          <div className="flex justify-between items-center ml-2">
             <div className="flex space-x-2">
-              <Button
-                onClick={webshareHandler}
-                className="border  border-white px-4 py-1 rounded-lg hover:bg-white hover:text-zinc-900 transition-all"
-              >
-                <HiShare />
-                {/* Share */}
-              </Button>
+              <ShareButton
+                title={blog.title}
+                text={blog.summary}
+                slug={blog.slug}
+              />
+
               <Link href={`/blogs/${blog.slug}`}>
                 <Button onClick={initiateLoading}>Read</Button>
               </Link>
